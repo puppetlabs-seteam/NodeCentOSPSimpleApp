@@ -11,7 +11,7 @@ seteam/PFA_NodeJS_SampleApp:
     - sudo yum install -y puppet-bolt
   PostInstall:
     - echo "Post-install Starting..."
-    - sudo bolt plan run sampleapp::prereqs
+    - sudo /usr/local/bin/bolt plan run sampleapp::prereqs
   Exec:
     - echo "Exec Starting."
     - publicip=$(curl -s ident.me) || true
