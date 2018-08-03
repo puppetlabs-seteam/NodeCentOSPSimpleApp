@@ -5,12 +5,10 @@ seteam/PFA_NodeJS_SampleApp:
   PkgInclude:
     - 'Boltdir/'
     - 'server.js'
-  Build:
-    - echo "Installing Prerequirements..."
-    - if sudo yum repolist | grep puppet; then echo skipping puppet repo install; else sudo rpm -Uvh https://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm; fi
-    - sudo yum install -y puppet-bolt
   PreInstall:
     - echo "PreInstall Starting."
+    - if sudo yum repolist | grep puppet; then echo skipping puppet repo install; else sudo rpm -Uvh https://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm; fi
+    - sudo yum install -y puppet-bolt
     - sudo /usr/local/bin/bolt plan run sampleapp::prereqs
     - sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
   Exec:
