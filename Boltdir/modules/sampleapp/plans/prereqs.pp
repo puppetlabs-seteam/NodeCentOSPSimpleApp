@@ -20,10 +20,10 @@ plan sampleapp::prereqs(
       ensure => present
     }
     
-    #file_capability { '/usr/local/bin/node':
-    #  ensure     => present,
-    #  capability => 'cap_net_bind_service=ep',
-    #}
+    file_capability { '/usr/bin/node':
+      ensure     => present,
+      capability => 'cap_net_bind_service=ep',
+    }
 
   }
 
