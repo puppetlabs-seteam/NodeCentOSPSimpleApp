@@ -27,6 +27,6 @@ plan sampleapp::prereqs(
 
   }
 
-  return $report
+  # return $report
 
 }
