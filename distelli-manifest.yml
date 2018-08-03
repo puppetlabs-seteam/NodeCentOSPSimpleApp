@@ -6,14 +6,11 @@ seteam/PFA_NodeJS_SampleApp:
     - 'Boltdir/'
     - 'server.js'
   PreInstall:
-    - echo "Pre-install Starting..."
     - if sudo yum repolist | grep puppet; then echo skipping puppet repo install; else sudo rpm -Uvh https://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm; fi
     - sudo yum install -y puppet-bolt
   PostInstall:
-    - echo "Post-install Starting..."
     - sudo /usr/local/bin/bolt plan run sampleapp::prereqs
   Exec:
-    - echo "Exec Starting."
     - publicip=$(curl -s ident.me) || true
     - 'echo "****************************************************************"'
     - 'echo     "NodeJS application will start on: http://$publicip"'
