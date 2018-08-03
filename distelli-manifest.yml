@@ -8,10 +8,13 @@ seteam/PFA_NodeJS_SampleApp:
     - node_modules/
   PreInstall:
     - echo "PreInstall Starting."
-    - if sudo yum repolist | grep epel; then echo skipping epel rpm install; else sudo rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; fi
-    - sudo yum -y install epel-release
-    - sudo yum -y install nodejs
-    - sudo yum -y install npm
+    - sudo rpm -Uvh https://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm
+    - sudo yum install -y puppet-bolt
+    - sudo bolt plan run sampleapp:prereqs
+    # - if sudo yum repolist | grep epel; then echo skipping epel rpm install; else sudo rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; fi
+    # - sudo yum -y install epel-release
+    # - sudo yum -y install nodejs
+    # - sudo yum -y install npm
     - sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
   PostInstall:
     - echo "PostInstall Starting."
