@@ -3,24 +3,16 @@ seteam/PFA_NodeJS_SampleApp:
   # has been provisioned on the destination deploy server:
 
   PkgInclude:
-    - server.js
-  PkgExclude:
-    - node_modules/
-  PreInstall:
-    - echo "PreInstall Starting."
+    - 'Boltdir/'
+    - 'server.js'
+  Build:
+    - echo "Installing Prerequirements..."
     - if sudo yum repolist | grep puppet; then echo skipping puppet repo install; else sudo rpm -Uvh https://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm; fi
     - sudo yum install -y puppet-bolt
-    - pwd
-    - ls -alh
+  PreInstall:
+    - echo "PreInstall Starting."
     - sudo /usr/local/bin/bolt plan run sampleapp::prereqs
-    # - if sudo yum repolist | grep epel; then echo skipping epel rpm install; else sudo rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; fi
-    # - sudo yum -y install epel-release
-    # - sudo yum -y install nodejs
-    # - sudo yum -y install npm
     - sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
-  PostInstall:
-    - echo "PostInstall Starting."
-    # - npm install
   Exec:
     - echo "Exec Starting."
     - publicip=$(curl -s ident.me) || true
