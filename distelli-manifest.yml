@@ -6,7 +6,7 @@ seteam/PFA_NodeJS_SampleApp:
     - 'Boltdir/'
     - 'server.js'
   PreInstall:
-    - if sudo yum repolist | grep puppet; then echo skipping puppet repo install; else sudo rpm -Uvh https://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm; fi
+    - sudo rpm -Uvh https://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm || true
     - sudo yum install -y puppet-bolt
   PostInstall:
     - sudo /usr/local/bin/bolt plan run sampleapp::prereqs
