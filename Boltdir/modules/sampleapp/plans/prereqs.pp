@@ -1,9 +1,12 @@
 plan sampleapp::prereqs(
 ) {
-  # prep this node for applying Puppet code
+  # Prep this node for applying Puppet code (doesn't work yet)
   # apply_prep('localhost')
+
+  # Retrieve facts
+  run_plan('facts', nodes => localhost)
   
-  # apply SampleApp prereqs
+  # Apply SampleApp prereqs
   apply('localhost') {
 
     include epel
