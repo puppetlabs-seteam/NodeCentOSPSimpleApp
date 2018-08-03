@@ -8,7 +8,7 @@ plan sampleapp::prereqs(
   run_plan('facts', nodes => 'localhost')
   
   # Apply SampleApp prereqs
-  apply('localhost') {
+  $report = apply('localhost') {
 
     include epel
     
@@ -26,5 +26,7 @@ plan sampleapp::prereqs(
     }
 
   }
+
+  return $report
 
 }
