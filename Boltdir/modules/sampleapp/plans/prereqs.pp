@@ -1,7 +1,7 @@
-plan mymodule::my_plan(
+plan sampleapp::prereqs(
 ) {
-  # prep this node
-  apply_prep('localhost')
+  # prep this node for applying Puppet code
+  # apply_prep('localhost')
   
   # apply SampleApp prereqs
   apply('localhost') {
