@@ -11,10 +11,7 @@ seteam/PFA_NodeJS_SampleApp:
     - sudo yum install -y puppet-bolt
   PostInstall:
     - echo "Post-install Starting..."
-    - pwd
-    - ls -alh
-    - sudo /usr/local/bin/bolt plan run sampleapp::prereqs
-    - sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
+    - sudo bolt plan run sampleapp::prereqs
   Exec:
     - echo "Exec Starting."
     - publicip=$(curl -s ident.me) || true
