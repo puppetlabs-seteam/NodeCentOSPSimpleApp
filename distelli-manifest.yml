@@ -9,6 +9,7 @@ seteam/PFA_NodeJS_SampleApp:
     - sudo rpm -Uvh https://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm || true
     - sudo yum install -y puppet-bolt
   PostInstall:
+    - sudo /usr/local/bin/bolt puppetfile install
     - sudo /usr/local/bin/bolt plan run sampleapp::prereqs
   Exec:
     - publicip=$(curl -s ident.me) || true
