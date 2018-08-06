@@ -1,3 +1,6 @@
 mod 'stahnma-epel',        :latest
 mod 'puppetlabs-stdlib',   :latest
 mod 'stm-file_capability', :latest
+
+# name the module holding the plan so it doesn't get purged by 'bolt module install'
+mod 'sampleapp',           local: true
