@@ -1,12 +1,12 @@
 seteam/PFA_NodeJS_SampleApp:
   # This Basic Distelli Manifest assumes the following
-  # has been provisioned on the destination deploy server:
+  # has been provisioned on the destination deploy server
 
   PkgInclude:
     - 'Boltdir/'
     - 'server.js'
   PreInstall:
-    - sudo rpm -Uvh https://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm || true
+    - sudo rpm -Uvh https://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm || true
     - sudo yum install -y puppet-bolt
   PostInstall:
     - sudo /usr/local/bin/bolt puppetfile install
